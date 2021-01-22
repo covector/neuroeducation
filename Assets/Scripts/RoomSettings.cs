@@ -8,6 +8,11 @@ public class RoomSettings : MonoBehaviour
     public int maxHealth;
     public bool staticLaser;
     public bool blinkAnim;
+    public float rayAngle;
+    public float rayLength;
+    public float rayOffset;
+    public float surviveReward;
+    public float damagePenalty;
     [HideInInspector]
     public Vector2 minSpawnPos;
     [HideInInspector]
