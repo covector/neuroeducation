@@ -1,9 +1,10 @@
 using UnityEngine;
-using Unity.MLAgents;
+using System.Collections;
 
 public class Room : MonoBehaviour
 {
     public GameObject laserObj;
+    public Transform staticLasers;
     public Transform laserContainer;
     float spawnTimer = 0f;
     RoomSettings settings;
@@ -11,6 +12,10 @@ public class Room : MonoBehaviour
     void Start()
     {
         settings = GetComponent<RoomSettings>();
+        foreach (Transform laser in staticLasers)
+        {
+            laser.gameObject.SetActive(settings.staticLaser);
+        }
     }
 
     void Update()
