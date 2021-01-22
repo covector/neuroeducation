@@ -458,6 +458,7 @@ GameObject:
   - component: {fileID: 709255278}
   - component: {fileID: 709255282}
   - component: {fileID: 709255280}
+  - component: {fileID: 709255283}
   - component: {fileID: 709255276}
   - component: {fileID: 709255277}
   - component: {fileID: 709255281}
@@ -546,7 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 0
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -556,13 +557,13 @@ MonoBehaviour:
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
-  m_InferenceDevice: 0
+  m_InferenceDevice: 1
   m_BehaviorType: 1
   m_BehaviorName: LaserDodge
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_ObservableAttributeHandling: 0
+  m_ObservableAttributeHandling: 1
 --- !u!114 &709255277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +581,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   room: {fileID: 1953125460}
+  health: 0
   settings: {fileID: 1953125461}
 --- !u!58 &709255278
 CircleCollider2D:
@@ -630,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 2
+  DecisionPeriod: 3
   TakeActionsBetweenDecisions: 1
 --- !u!114 &709255281
 MonoBehaviour:
@@ -644,7 +646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959396bd6f7fefe41a736fab0c9958fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
   settings: {fileID: 1953125461}
 --- !u!95 &709255282
 Animator:
@@ -665,6 +666,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &709255283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709255273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags:
+  - Laser
+  m_RaysPerDirection: 6
+  m_MaxRayDegrees: 180
+  m_SphereCastRadius: 0
+  m_RayLength: 2
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &846679681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1157,8 @@ MonoBehaviour:
   rayAngle: 30
   rayLength: 2
   rayOffset: 0.5
+  surviveReward: 0.01
+  damagePenalty: -1
   minSpawnPos: {x: -8.8, y: -4.9}
   maxSpawnPos: {x: 8.8, y: 4.9}
   playerRad: 0
