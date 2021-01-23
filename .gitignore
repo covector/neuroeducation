@@ -71,5 +71,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # ML Agents
-/[Aa]ssets/Training/results.meta
-/[Aa]ssets/Training/results
+/Training/results

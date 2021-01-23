@@ -10,6 +10,8 @@ public class LaserAgent : Agent
     LaserLogic logic;
     [SerializeField]
     int health;
+    [SerializeField]
+    float cumRew;
     public RoomSettings settings;
     [Observable]
     public Vector2 RigidBodyVelocity
@@ -22,6 +24,7 @@ public class LaserAgent : Agent
         rb = GetComponent<Rigidbody2D>();
         logic = GetComponent<LaserLogic>();
         health = settings.maxHealth;
+        cumRew = 0f;
     }
 
     public override void OnEpisodeBegin()
@@ -32,6 +35,7 @@ public class LaserAgent : Agent
         transform.localPosition = Vector3.zero;
         transform.localEulerAngles = Vector3.zero;
         rb.velocity = Vector2.zero;
+        cumRew = 0f;
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -49,6 +53,7 @@ public class LaserAgent : Agent
         Constraint();
 
         AddReward(health * settings.surviveReward * Time.fixedDeltaTime);
+        cumRew += health * settings.surviveReward * Time.fixedDeltaTime;
     }
 
     void TurnTo(Vector2 vel)
@@ -94,6 +99,7 @@ public class LaserAgent : Agent
     {
         health--;
         AddReward(-1 * settings.damagePenalty);
+        cumRew -= settings.damagePenalty;
         if (health <= 0)
         {
             EndEpisode();
