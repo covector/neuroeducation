@@ -59,14 +59,14 @@ public class LaserAgent : Agent
 
     void Constraint()
     {
-        float x = transform.position.x;
-        float y = transform.position.y;
+        float x = transform.localPosition.x;
+        float y = transform.localPosition.y;
         float rad = settings.playerRad;
 
         x = Mathf.Clamp(x, settings.minSpawnPos.x + rad, settings.maxSpawnPos.x - rad);
         y = Mathf.Clamp(y, settings.minSpawnPos.y + rad, settings.maxSpawnPos.y - rad);
 
-        transform.position = new Vector3(x, y, 0f);
+        transform.localPosition = new Vector3(x, y, 0f);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)

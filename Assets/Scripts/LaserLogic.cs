@@ -28,7 +28,7 @@ public class LaserLogic : MonoBehaviour
 
     public void ResetLogic()
     {
-        damageTimer = 0;
+        damageTimer = 0f;
         animator.SetBool("Damaged", false);
     }
 

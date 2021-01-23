@@ -45,10 +45,10 @@ public class Room : MonoBehaviour
         // Random position
         float randX = Random.Range(settings.minSpawnPos.x, settings.maxSpawnPos.x);
         float randY = Random.Range(settings.minSpawnPos.y, settings.maxSpawnPos.y);
-        Vector3 randpos = new Vector3(randX, randY, 0);
+        Vector3 randpos = transform.position + new Vector3(randX, randY, 0);
 
         // Random rotation
-        Quaternion randrot = Quaternion.Euler(0f, 0f, Random.Range(-90f, 90f));
+        Quaternion randrot = Quaternion.Euler(0f, 0f, Random.Range(-90f, 90f) + transform.eulerAngles.z);
 
         // Spawn
         Instantiate(laserObj, randpos, randrot, laserContainer);

@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class RoomSettings : MonoBehaviour
 {
+    [Header("Environment")]
     public float moveForce;
     public float spawnCoolDown;
     public float damageCoolDown;
     public int maxHealth;
     public bool staticLaser;
+    [Header("Cosmetics")]
     public bool blinkAnim;
-    public float rayAngle;
-    public float rayLength;
-    public float rayOffset;
+    [Header("Rewards")]
     public float surviveReward;
     public float damagePenalty;
     [HideInInspector]
